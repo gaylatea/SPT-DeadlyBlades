@@ -3,6 +3,8 @@ import { IPostDBLoadMod } from "@spt-aki/models/external/IPostDBLoadMod";
 import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
 
+const MELEE_DAMAGE_MULT = 10.0;
+
 @injectable()
 class DeadlyBlades implements IPostDBLoadMod {
     constructor(
@@ -15,12 +17,12 @@ class DeadlyBlades implements IPostDBLoadMod {
 
         for(const item of Object.values(serverDB.templates.items)) {
             if(item._props.knifeHitSlashDam) {
-                item._props.knifeHitSlashDam *= 10;
-                item._props.knifeHitStabDam *= 10;
+                item._props.knifeHitSlashDam *= MELEE_DAMAGE_MULT;
+                item._props.knifeHitStabDam *= MELEE_DAMAGE_MULT;
             }
         }
 
-        this.logger.success("[DeadlyBlades] Melee weapons are now much more deadly.");
+        this.logger.success(`[DeadlyBlades] Melee weapons are ${MELEE_DAMAGE_MULT}x more deadly.`);
     }
 }
 

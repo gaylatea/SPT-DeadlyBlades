@@ -7,7 +7,7 @@
     "main": "src/mod.js",
     "dependencies": {
     },
-    "akiVersion": "3.5.4",
+    "akiVersion": "3.5.*",
     "scripts": {
         "setup": "npm i",
         "build": "node ./packageBuild.ts"
